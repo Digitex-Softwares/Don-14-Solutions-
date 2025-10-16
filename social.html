@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Services - Don 14 Solutions</title>
+<link rel="icon" href="https://files.catbox.moe/p878gt.jpg" type="image/png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+body{background:linear-gradient(135deg,#00b8a9,#00695c);color:#fff;overflow-x:hidden;}
+header{text-align:center;padding:40px 20px 20px;position:relative;}
+header img{width:90px;border-radius:50%;box-shadow:0 0 20px rgba(255,255,255,0.3);}
+header h1{font-size:1.9rem;margin-top:10px;font-weight:700;}
+header p{color:#e8fff2;margin-bottom:10px;}
+.back-btn{position:absolute;left:25px;top:25px;background:#ffffff22;color:#fff;padding:8px 18px;border-radius:20px;text-decoration:none;font-size:0.9rem;transition:0.3s;border:1px solid #fff3;}
+.back-btn:hover{background:#ffffff44;}
+.form-section{background:#ffffff;color:#333;max-width:700px;margin:40px auto;border-radius:20px;padding:30px 25px;box-shadow:0 6px 25px rgba(0,0,0,0.15);animation:fadeIn 0.8s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.form-section h2{text-align:center;margin-bottom:15px;color:#00796b;}
+.tabs{display:flex;flex-wrap:wrap;justify-content:center;margin-bottom:20px;gap:8px;}
+.tab{flex:1;min-width:130px;padding:12px;text-align:center;background:#e0f2f1;color:#00796b;font-weight:600;cursor:pointer;transition:0.3s;border-radius:8px;}
+.tab.active{background:#00796b;color:#fff;box-shadow:0 3px 8px rgba(0,0,0,0.2);}
+label{display:block;margin:15px 0 5px;font-weight:600;}
+input,textarea,select{width:100%;padding:12px 15px;border:2px solid #ccc;border-radius:10px;font-size:1rem;outline:none;transition:0.3s;margin-bottom:10px;}
+input:focus,textarea:focus,select:focus{border-color:#00bfa5;}
+button{background:#00bfa5;color:#fff;border:none;width:100%;padding:14px;border-radius:12px;font-size:1.1rem;margin-top:20px;cursor:pointer;font-weight:600;transition:0.3s;}
+button:hover{background:#00997e;transform:scale(1.02);}
+.whatsapp-btn{position:fixed;bottom:25px;right:25px;background:#25d366;color:white;border:none;border-radius:50%;width:60px;height:60px;font-size:28px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;transition:0.3s ease;}
+.whatsapp-btn:hover{background:#20bd5a;transform:scale(1.1);}
+footer{text-align:center;padding:30px;color:#d4ffe5;}
+@media(max-width:600px){.tabs{flex-direction:column;}.tab{margin:5px 0;}.back-btn{top:15px;left:15px;}}
+.hidden{display:none;}
+</style>
+</head>
+<body>
+
+<header>
+<a href="index.html" class="back-btn">⬅ Back to Home</a>
+<img src="https://files.catbox.moe/p878gt.jpg" alt="Don 14 Logo" />
+<h1>Social Media Services</h1>
+<p>Monetization, Verification, Boosting & WhatsApp Unban</p>
+</header>
+
+<section class="form-section">
+<h2>Select Service</h2>
+
+<div class="tabs">
+<div class="tab active" onclick="switchTab('monetize',event)">Monetization</div>
+<div class="tab" onclick="switchTab('verify',event)">Blue Tick Verification</div>
+<div class="tab" onclick="switchTab('boost',event)">Boosting</div>
+<div class="tab" onclick="switchTab('unban',event)">WhatsApp Unban</div>
+</div>
+
+<div id="serviceFields">
+
+<!-- Monetization / Verification Fields -->
+<div id="monetizeFields">
+<label for="platform">Platform</label>
+<select id="platformMonetize">
+<option value="">-- Select Platform --</option>
+<option>Facebook</option>
+<option>Instagram</option>
+<option>TikTok</option>
+<option>YouTube</option>
+<option>Twitter/X</option>
+</select>
+
+<label for="username">Username / Profile Link</label>
+<input type="text" id="usernameMonetize" placeholder="Enter your profile link or username">
+</div>
+
+<!-- Boosting Fields -->
+<div id="boostFields" class="hidden">
+<label for="platformBoost">Platform</label>
+<select id="platformBoost">
+<option value="">-- Select Platform --</option>
+<option>Facebook</option>
+<option>Instagram</option>
+<option>TikTok</option>
+<option>YouTube</option>
+<option>Twitter/X</option>
+</select>
+
+<label for="boostType">Service Type</label>
+<select id="boostType" onchange="updateBoostInput()">
+<option value="">-- Select Boosting Type --</option>
+<option value="followers">Followers</option>
+<option value="subscribers">Subscribers</option>
+<option value="likes">Likes</option>
+<option value="views">Views</option>
+<option value="watchHours">Watch Hours</option>
+<option value="shares">Shares</option>
+<option value="comments">Comments</option>
+</select>
+
+<div id="boostInputContainer"></div>
+</div>
+
+<!-- WhatsApp Unban Fields -->
+<div id="unbanFields" class="hidden">
+<label for="banReason">Reason for Ban</label>
+<textarea id="banReason" rows="4" placeholder="Explain why your WhatsApp account was banned"></textarea>
+
+<label for="banType">Ban Type</label>
+<select id="banType">
+<option value="">-- Select Ban Type --</option>
+<option>Permanent</option>
+<option>Temporary</option>
+</select>
+</div>
+
+<!-- Common Fields -->
+<label for="fullName">Full Name</label>
+<input type="text" id="fullName" placeholder="Enter your full name">
+
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" placeholder="Enter your contact number">
+
+<button onclick="sendToWhatsApp()">Send Request via WhatsApp</button>
+
+</div>
+</section>
+
+<button class="whatsapp-btn" onclick="window.open('https://wa.me/233537284840','_blank')">💬</button>
+
+<footer>&copy; 2025 Don 14 Solutions. All Rights Reserved.</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+  let currentService = "Monetization";
+
+  function switchTab(service,event){
+    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+    event.target.classList.add("active");
+    currentService = service;
+
+    document.getElementById("monetizeFields").classList.add("hidden");
+    document.getElementById("boostFields").classList.add("hidden");
+    document.getElementById("unbanFields").classList.add("hidden");
+    document.getElementById("boostInputContainer").innerHTML="";
+
+    if(service==="monetize"||service==="verify") document.getElementById("monetizeFields").classList.remove("hidden");
+    else if(service==="boost") document.getElementById("boostFields").classList.remove("hidden");
+    else if(service==="unban") document.getElementById("unbanFields").classList.remove("hidden");
+  }
+
+  window.switchTab = switchTab;
+
+  window.updateBoostInput = function(){
+    const boostType = document.getElementById("boostType").value;
+    const container = document.getElementById("boostInputContainer");
+    container.innerHTML="";
+    if(!boostType) return;
+
+    let labelText="", placeholder="";
+    if(boostType==="followers") labelText="Profile Link"; placeholder="Enter your profile link";
+    else if(boostType==="subscribers") labelText="Channel Link"; placeholder="Enter your channel link";
+    else labelText="Post Link"; placeholder="Enter your post link";
+
+    container.innerHTML=`
+      <label>${labelText}</label>
+      <input type="text" id="boostLink" placeholder="${placeholder}">
+      <label>Quantity</label>
+      <input type="number" id="boostQuantity" placeholder="Enter quantity">
+    `;
+  }
+
+  window.sendToWhatsApp = function(){
+    const fullName = document.getElementById("fullName").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    if(!fullName || !phone){alert("Please fill all required fields."); return;}
+
+    let message="Hello Don 14 Solutions,%0A%0AI would like to request a social media service.%0AService: "+currentService+"%0A";
+
+    if(currentService==="monetize"||currentService==="verify"){
+      const platform = document.getElementById("platformMonetize").value;
+      const username = document.getElementById("usernameMonetize").value.trim();
+      if(!platform||!username){alert("Please fill all service fields."); return;}
+      message+=`Platform: ${platform}%0AUsername/Profile: ${username}%0A`;
+    } else if(currentService==="boost"){
+      const platform = document.getElementById("platformBoost").value;
+      const boostType = document.getElementById("boostType").value;
+      const boostLink = document.getElementById("boostLink")?.value.trim();
+      const boostQuantity = document.getElementById("boostQuantity")?.value.trim();
+      if(!platform||!boostType||!boostLink||!boostQuantity){alert("Please fill all boosting fields."); return;}
+      message+=`Platform: ${platform}%0ABoost Type: ${boostType}%0ALink: ${boost
