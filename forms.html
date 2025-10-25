@@ -6,190 +6,28 @@
   <title>Forms - Don 14 Solutions</title>
   <link rel="icon" type="image/png" href="https://files.catbox.moe/p878gt.jpg">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-
-    body {
-      background: linear-gradient(135deg, #00b8a9, #00695c);
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    header {
-      text-align: center;
-      padding: 40px 20px 20px;
-      position: relative;
-    }
-
-    header img {
-      width: 90px;
-      border-radius: 50%;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    }
-
-    header h1 {
-      font-size: 1.9rem;
-      margin-top: 10px;
-      font-weight: 700;
-    }
-
-    header p {
-      color: #e8fff2;
-      margin-bottom: 10px;
-    }
-
-    .back-btn {
-      position: absolute;
-      left: 25px;
-      top: 25px;
-      background: #ffffff22;
-      color: #fff;
-      padding: 8px 18px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: 0.3s;
-      border: 1px solid #fff3;
-    }
-
-    .back-btn:hover {
-      background: #ffffff44;
-    }
-
-    .form-section {
-      background: #ffffff;
-      color: #333;
-      max-width: 700px;
-      margin: 40px auto;
-      border-radius: 20px;
-      padding: 30px 25px;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-      animation: fadeIn 0.8s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .form-section h2 {
-      text-align: center;
-      margin-bottom: 15px;
-      color: #00796b;
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 20px;
-      gap: 8px;
-    }
-
-    .tab {
-      flex: 1;
-      min-width: 130px;
-      padding: 12px;
-      text-align: center;
-      background: #e0f2f1;
-      color: #00796b;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-      border-radius: 8px;
-    }
-
-    .tab.active {
-      background: #00796b;
-      color: #fff;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    label {
-      display: block;
-      margin: 15px 0 5px;
-      font-weight: 600;
-    }
-
-    select, input {
-      width: 100%;
-      padding: 12px 15px;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      font-size: 1rem;
-      outline: none;
-      transition: 0.3s;
-    }
-
-    select:focus, input:focus {
-      border-color: #00bfa5;
-    }
-
-    button {
-      background: #00bfa5;
-      color: #fff;
-      border: none;
-      width: 100%;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      margin-top: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #00997e;
-      transform: scale(1.02);
-    }
-
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #25d366;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s ease;
-    }
-
-    .whatsapp-btn:hover {
-      background: #20bd5a;
-      transform: scale(1.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #d4ffe5;
-    }
-
-    @media (max-width: 600px) {
-      .tabs {
-        flex-direction: column;
-      }
-      .tab {
-        margin: 5px 0;
-      }
-      .back-btn {
-        top: 15px;
-        left: 15px;
-      }
-    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+    body { background: linear-gradient(135deg, #00b8a9, #00695c); color:#fff; overflow-x:hidden; }
+    header { text-align:center; padding:40px 20px 20px; position:relative; }
+    header img { width:90px; border-radius:50%; box-shadow:0 0 20px rgba(255,255,255,0.3); }
+    header h1 { font-size:1.9rem; margin-top:10px; font-weight:700; }
+    header p { color:#e8fff2; margin-bottom:10px; }
+    .back-btn { position:absolute; left:25px; top:25px; background:#ffffff22; color:#fff; padding:8px 18px; border-radius:20px; text-decoration:none; font-size:0.9rem; transition:0.3s; border:1px solid #fff3; }
+    .back-btn:hover { background:#ffffff44; }
+    .form-section { background:#ffffff; color:#333; max-width:700px; margin:40px auto; border-radius:20px; padding:30px 25px; box-shadow:0 6px 25px rgba(0,0,0,0.15); animation:fadeIn 0.8s ease; }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+    .form-section h2 { text-align:center; margin-bottom:15px; color:#00796b; }
+    .tabs { display:flex; flex-wrap:wrap; justify-content:center; margin-bottom:20px; gap:8px; }
+    .tab { flex:1; min-width:130px; padding:12px; text-align:center; background:#e0f2f1; color:#00796b; font-weight:600; cursor:pointer; transition:0.3s; border-radius:8px; }
+    .tab.active { background:#00796b; color:#fff; box-shadow:0 3px 8px rgba(0,0,0,0.2); }
+    .tab:hover { background:#00bfa5; color:#fff; }
+    label { display:block; margin:15px 0 5px; font-weight:600; }
+    select, input { width:100%; padding:12px 15px; border:2px solid #ccc; border-radius:10px; font-size:1rem; outline:none; transition:0.3s; }
+    select:focus, input:focus { border-color:#00bfa5; }
+    button { background:#00bfa5; color:#fff; border:none; width:100%; padding:14px; border-radius:12px; font-size:1.1rem; margin-top:20px; cursor:pointer; font-weight:600; transition:0.3s; }
+    button:hover { background:#00997e; transform:scale(1.02); }
+    footer { text-align:center; padding:30px; color:#d4ffe5; }
+    @media (max-width:600px){ .tabs{flex-direction:column;} .tab{margin:5px 0;} .back-btn{top:15px; left:15px;} }
   </style>
 </head>
 <body>
@@ -223,12 +61,8 @@
     <label for="phone">Phone Number</label>
     <input type="tel" id="phone" placeholder="Enter your contact number" />
 
-    <button onclick="sendToWhatsApp()">Send Request via WhatsApp</button>
+    <button onclick="sendToTelegram()">Send Request</button>
   </section>
-
-  <button class="whatsapp-btn" onclick="window.open('https://wa.me/233537284840', '_blank')">
-    💬
-  </button>
 
   <footer>
     &copy; 2025 Don 14 Solutions. All Rights Reserved.
@@ -236,39 +70,10 @@
 
   <script>
     const data = {
-      universities: [
-        "University of Ghana", "Kwame Nkrumah University of Science and Technology",
-        "University of Cape Coast", "University of Education, Winneba",
-        "University of Development Studies", "University of Energy and Natural Resources",
-        "University of Health and Allied Sciences", "University of Mines and Technology",
-        "GIMPA", "Accra Technical University", "Cape Coast Technical University",
-        "Kumasi Technical University", "Koforidua Technical University",
-        "Tamale Technical University", "Ho Technical University", "Takoradi Technical University",
-        "Sunyani Technical University", "University of Environment and Sustainable Development",
-        "Ashesi University", "Valley View University", "Catholic University College of Ghana",
-        "Regent University College of Science and Technology", "Lancaster University Ghana"
-      ],
-      training: [
-        "University of Cape Coast", "University of Education, Winneba", "University of Ghana",
-        "Presbyterian College of Education, Akropong", "Wesley College of Education, Kumasi",
-        "St. Louis College of Education, Kumasi", "Holy Child College of Education, Takoradi",
-        "Ola College of Education, Cape Coast", "Komenda College of Education, Komenda",
-        "Ada College of Education, Ada"
-      ],
-      nursing: [
-        "37 Military Hospital Nurses Training College", "Nursing and Midwifery Training College - Pantang",
-        "Agogo Nursing Training College", "Ankaful Nursing Training College",
-        "Asanteman Nursing and Midwifery Training College", "Bawku Nurses' Training College",
-        "Berekum Nursing and Midwifery Training College", "Bolgatanga Nursing Training College",
-        "Cape Coast Nursing and Midwifery Training College", "Holy Family Nursing Midwifery Training School"
-      ],
-      technical: [
-        "Yamfo Technical Institute", "TSC Technical Institute, Bechem",
-        "Opportunities Industrialization Technical Institute, Accra", "Pilot Technical Institute, Kokomlemle",
-        "New Century Technical Institute, Dansoman", "Sacred Heart Technical Institute, Jamestown",
-        "Tema GRATIS Technical Institute", "Danfa Technical Institute",
-        "Dodowa Technical Institute", "Tema Technical Institute"
-      ]
+      universities: ["University of Ghana", "Kwame Nkrumah University of Science and Technology","University of Cape Coast","University of Education, Winneba","University of Development Studies"],
+      training: ["Presbyterian College of Education, Akropong", "Wesley College of Education, Kumasi","St. Louis College of Education, Kumasi","Holy Child College of Education, Takoradi"],
+      nursing: ["37 Military Hospital Nurses Training College","Nursing and Midwifery Training College - Pantang","Agogo Nursing Training College"],
+      technical: ["Yamfo Technical Institute","TSC Technical Institute, Bechem","Opportunities Industrialization Technical Institute, Accra"]
     };
 
     function populateDropdown(list) {
@@ -288,20 +93,50 @@
       populateDropdown(data[tabType]);
     }
 
-    function sendToWhatsApp() {
+    async function hashData(data) {
+      const encoder = new TextEncoder();
+      const dataBuffer = encoder.encode(data);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    async function sendToTelegram() {
       const selected = document.getElementById("institution").value;
       const custom = document.getElementById("customInstitution").value.trim();
       const institution = custom || selected;
-      const fullName = document.getElementById("fullName").value;
-      const phone = document.getElementById("phone").value;
+      const fullName = document.getElementById("fullName").value.trim();
+      const phone = document.getElementById("phone").value.trim();
 
       if (!institution || !fullName || !phone) {
         alert("Please fill all fields before submitting.");
         return;
       }
 
-      const message = `Hello Don 14 Solutions,%0A%0AI would like to apply for a form at:%0AInstitution: ${institution}%0AName: ${fullName}%0APhone: ${phone}%0A%0AThank you!`;
-      window.open(`https://wa.me/233537284840?text=${message}`, "_blank");
+      const hashedInstitution = await hashData(institution);
+      const hashedName = await hashData(fullName);
+      const hashedPhone = await hashData(phone);
+
+      const token = "8372924450:AAGgPPZ_mpdORPZG2PVaDOt9ymUeE2RVfoE"; // replace with your bot token
+      const chatId = "8049244190";   // replace with your chat ID
+
+      const message = `
+New Form Request:
+Institution (hashed): ${hashedInstitution}
+Name (hashed): ${hashedName}
+Phone (hashed): ${hashedPhone}
+      `;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ chat_id: chatId, text: message })
+      })
+      .then(res => {
+        if(res.ok) alert("Request sent successfully!");
+        else alert("Failed to send request.");
+      })
+      .catch(err => alert("Error sending request."));
     }
 
     // Load default
