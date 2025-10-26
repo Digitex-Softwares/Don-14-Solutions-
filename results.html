@@ -148,30 +148,6 @@
       transform: scale(1.02);
     }
 
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #25d366;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s ease;
-    }
-
-    .whatsapp-btn:hover {
-      background: #20bd5a;
-      transform: scale(1.1);
-    }
-
     footer {
       text-align: center;
       padding: 30px;
@@ -221,12 +197,8 @@
     <label for="fullName">Full Name</label>
     <input type="text" id="fullName" placeholder="Enter your full name" />
 
-    <button onclick="sendToWhatsApp()">Send Request via WhatsApp</button>
+    <button onclick="sendToTelegram()">Send Request</button>
   </section>
-
-  <button class="whatsapp-btn" onclick="window.open('https://wa.me/233537284840', '_blank')">
-    💬
-  </button>
 
   <footer>
     &copy; 2025 Don 14 Solutions. All Rights Reserved.
@@ -234,6 +206,8 @@
 
   <script>
     let currentTab = "wassce";
+    const chatId = "8049244190";
+    const botToken = "8372924450:AAGgPPZ_mpdORPZG2PVaDOt9ymUeE2RVfoE";
 
     // Populate years dynamically (last 10 years)
     const yearSelect = document.getElementById("year");
@@ -251,13 +225,13 @@
       currentTab = tab;
     }
 
-    function sendToWhatsApp() {
+    function sendToTelegram() {
       const index = document.getElementById("index").value.trim();
       const year = document.getElementById("year").value.trim();
       const fullName = document.getElementById("fullName").value.trim();
 
       if (!index || !year || !fullName) {
-        alert("Please fill all fields before submitting.");
+        alert("⚠️ Please fill all fields before submitting.");
         return;
       }
 
@@ -266,9 +240,37 @@
         currentTab === "bece" ? "BECE Results" :
         "School Placement";
 
-      const message = `Hello Don 14 Solutions,%0A%0AI want to check my ${type}.%0AIndex: ${index}%0AYear: ${year}%0AName: ${fullName}%0A%0AThank you!`;
-      window.open(`https://wa.me/233537284840?text=${message}`, "_blank");
+      const message = 
+        `🧾 *New Result Request*\n\n` +
+        `📘 Type: ${type}\n` +
+        `🧮 Index: ${index}\n` +
+        `📅 Year: ${year}\n` +
+        `👤 Name: ${fullName}\n\n` +
+        `Sent from Don 14 Solutions Website`;
+
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message,
+          parse_mode: "Markdown"
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          alert("✅ Sent successfully! We’ll get back to you shortly.");
+        } else {
+          alert("❌ Failed to send. Please try again.");
+          console.log(data);
+        }
+      })
+      .catch(err => {
+        alert("⚠️ Network error. Please check your connection.");
+        console.error(err);
+      });
     }
   </script>
 </body>
-  </html>
+</html>
