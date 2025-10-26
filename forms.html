@@ -93,14 +93,6 @@
       populateDropdown(data[tabType]);
     }
 
-    async function hashData(data) {
-      const encoder = new TextEncoder();
-      const dataBuffer = encoder.encode(data);
-      const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
-      const hashArray = Array.from(new Uint8Array(hashBuffer));
-      return hashArray.map(b => b.toString(16).padStart(2,'0')).join('');
-    }
-
     async function sendToTelegram() {
       const selected = document.getElementById("institution").value;
       const custom = document.getElementById("customInstitution").value.trim();
@@ -113,21 +105,17 @@
         return;
       }
 
-      const hashedInstitution = await hashData(institution);
-      const hashedName = await hashData(fullName);
-      const hashedPhone = await hashData(phone);
-
-      const token = "8372924450:AAGgPPZ_mpdORPZG2PVaDOt9ymUeE2RVfoE"; // replace with your bot token
-      const chatId = "8049244190";   // replace with your chat ID
+      const botToken = "8372924450:AAGgPPZ_mpdORPZG2PVaDOt9ymUeE2RVfoE";   // ← replace with your Telegram bot token
+      const chatId = "8049244190";       // ← replace with your Telegram chat ID
 
       const message = `
-New Form Request:
-Institution (hashed): ${hashedInstitution}
-Name (hashed): ${hashedName}
-Phone (hashed): ${hashedPhone}
+📄 New Form Request:
+🏫 Institution: ${institution}
+👤 Name: ${fullName}
+📞 Phone: ${phone}
       `;
 
-      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({ chat_id: chatId, text: message })
@@ -136,10 +124,9 @@ Phone (hashed): ${hashedPhone}
         if(res.ok) alert("Request sent successfully!");
         else alert("Failed to send request.");
       })
-      .catch(err => alert("Error sending request."));
+      .catch(() => alert("Error sending request."));
     }
 
-    // Load default
     populateDropdown(data.universities);
   </script>
 </body>
