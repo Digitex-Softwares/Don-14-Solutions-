@@ -25,8 +25,6 @@ input,textarea,select{width:100%;padding:12px 15px;border:2px solid #ccc;border-
 input:focus,textarea:focus,select:focus{border-color:#00bfa5;}
 button{background:#00bfa5;color:#fff;border:none;width:100%;padding:14px;border-radius:12px;font-size:1.1rem;margin-top:20px;cursor:pointer;font-weight:600;transition:0.3s;}
 button:hover{background:#00997e;transform:scale(1.02);}
-.whatsapp-btn{position:fixed;bottom:25px;right:25px;background:#25d366;color:white;border:none;border-radius:50%;width:60px;height:60px;font-size:28px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;transition:0.3s ease;}
-.whatsapp-btn:hover{background:#20bd5a;transform:scale(1.1);}
 footer{text-align:center;padding:30px;color:#d4ffe5;}
 @media(max-width:600px){.tabs{flex-direction:column;}.tab{margin:5px 0;}.back-btn{top:15px;left:15px;}}
 .hidden{display:none;}
@@ -116,16 +114,18 @@ footer{text-align:center;padding:30px;color:#d4ffe5;}
 <label>Phone Number</label>
 <input type="tel" id="phone" placeholder="Enter your contact number">
 
-<button onclick="sendToWhatsApp()">Send Request via WhatsApp</button>
+<button onclick="sendToTelegram()">Send Request</button>
 </div>
 </section>
-
-<button class="whatsapp-btn" onclick="window.open('https://wa.me/233537284840','_blank')">💬</button>
 
 <footer>&copy; 2025 Don 14 Solutions. All Rights Reserved.</footer>
 
 <script>
 let currentService = "monetize";
+
+// ⚙️ Telegram credentials — insert yours privately
+const botToken = "8372924450:AAGgPPZ_mpdORPZG2PVaDOt9ymUeE2RVfoE";
+const chatId = "8049244190";
 
 function switchTab(service, event) {
   document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
@@ -164,37 +164,49 @@ function updateBoostInput() {
   `;
 }
 
-function sendToWhatsApp() {
+async function sendToTelegram() {
   const fullName = document.getElementById("fullName").value.trim();
   const phone = document.getElementById("phone").value.trim();
-  if (!fullName || !phone) { alert("Please fill all required fields."); return; }
+  if (!fullName || !phone) return alert("Please fill all required fields.");
 
-  let message = `Hello Don 14 Solutions,%0A%0ARequest for Social Media Service:%0AService: ${currentService}%0A`;
+  let message = `🧾 *New Social Media Request*\n\n`;
+  message += `*Service:* ${currentService}\n`;
 
   if (currentService === "monetize" || currentService === "verify") {
     const platform = document.getElementById("platformMonetize").value;
     const username = document.getElementById("usernameMonetize").value.trim();
-    if (!platform || !username) { alert("Please complete all fields."); return; }
-    message += `Platform: ${platform}%0AProfile: ${username}%0A`;
+    if (!platform || !username) return alert("Please complete all fields.");
+    message += `*Platform:* ${platform}\n*Profile:* ${username}\n`;
 
   } else if (currentService === "boost") {
     const platform = document.getElementById("platformBoost").value;
     const boostType = document.getElementById("boostType").value;
     const boostLink = document.getElementById("boostLink")?.value.trim();
     const boostQuantity = document.getElementById("boostQuantity")?.value.trim();
-    if (!platform || !boostType || !boostLink || !boostQuantity) { alert("Please fill all boosting fields."); return; }
-    message += `Platform: ${platform}%0AType: ${boostType}%0ALink: ${boostLink}%0AQuantity: ${boostQuantity}%0A`;
+    if (!platform || !boostType || !boostLink || !boostQuantity)
+      return alert("Please fill all boosting fields.");
+    message += `*Platform:* ${platform}\n*Type:* ${boostType}\n*Link:* ${boostLink}\n*Quantity:* ${boostQuantity}\n`;
 
   } else if (currentService === "unban") {
     const reason = document.getElementById("banReason").value.trim();
     const type = document.getElementById("banType").value;
-    if (!reason || !type) { alert("Please provide unban details."); return; }
-    message += `Reason: ${reason}%0ABan Type: ${type}%0A`;
+    if (!reason || !type) return alert("Please provide unban details.");
+    message += `*Reason:* ${reason}\n*Ban Type:* ${type}\n`;
   }
 
-  message += `%0AName: ${fullName}%0APhone: ${phone}`;
+  message += `\n👤 *Name:* ${fullName}\n📞 *Phone:* ${phone}`;
 
-  window.open(`https://wa.me/233537284840?text=${message}`, "_blank");
+  try {
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    await fetch(url, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "Markdown" })
+    });
+    alert("✅ Request sent successfully!");
+  } catch (err) {
+    alert("❌ Failed to send request. Please try again.");
+  }
 }
 </script>
 </body>
