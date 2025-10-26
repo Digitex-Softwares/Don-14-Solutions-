@@ -115,14 +115,6 @@
     }
   }
 
-  async function hashData(data){
-    const encoder = new TextEncoder();
-    const dataBuffer = encoder.encode(data);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2,'0')).join('');
-  }
-
   async function sendToTelegram(){
     const details = document.getElementById("details").value.trim();
     const fullName = document.getElementById("fullName").value.trim();
@@ -133,29 +125,19 @@
       return;
     }
 
-    const token = "8372924450:AAGgPPZ_mpdORPZG2PVaDOt9ymUeE2RVfoE"; // Replace with your bot token
-    const chatId = "8049244190";   // Replace with your chat ID
+    const token = "8372924450:AAGgPPZ_mpdORPZG2PVaDOt9ymUeE2RVfoE"; // 🔒 Replace with your real bot token locally
+    const chatId = "8049244190";  // 🔒 Replace with your real chat ID locally
 
-    const hashedName = await hashData(fullName);
-    const hashedPhone = await hashData(phone);
-    const hashedDetails = await hashData(details);
-
-    const message = `
-New Service Request:
-Service: ${currentService}
-Details (hashed): ${hashedDetails}
-Name (hashed): ${hashedName}
-Phone (hashed): ${hashedPhone}
-    `;
+    const message = `🧾 *New Service Request*\n🛠 Service: ${currentService}\n📋 Details: ${details}\n👤 Name: ${fullName}\n📞 Phone: ${phone}`;
 
     fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ chat_id: chatId, text: message })
+      body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "Markdown" })
     })
     .then(res => {
-      if(res.ok) alert("Request sent successfully!");
-      else alert("Failed to send request.");
+      if(res.ok) alert("✅ Request sent successfully!");
+      else alert("⚠️ Failed to send request. Check your credentials.");
     })
     .catch(err => alert("Error sending request."));
   }
@@ -163,3 +145,4 @@ Phone (hashed): ${hashedPhone}
 
 </body>
 </html>
+
