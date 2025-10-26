@@ -22,8 +22,6 @@ input,textarea,select{width:100%;padding:10px 12px;border:2px solid #ccc;border-
 input:focus,textarea:focus,select:focus{border-color:#00bfa5;}
 button{background:#00bfa5;color:#fff;border:none;width:100%;padding:14px;border-radius:12px;font-size:1.1rem;margin-top:20px;cursor:pointer;font-weight:600;transition:0.3s;}
 button:hover{background:#00997e;transform:scale(1.02);}
-.whatsapp-btn{position:fixed;bottom:25px;right:25px;background:#25d366;color:white;border:none;border-radius:50%;width:60px;height:60px;font-size:28px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;transition:0.3s ease;}
-.whatsapp-btn:hover{background:#20bd5a;transform:scale(1.1);}
 footer{text-align:center;padding:30px;color:#d4ffe5;}
 @media(max-width:600px){.back-btn{top:15px;left:15px;}}
 </style>
@@ -61,15 +59,13 @@ footer{text-align:center;padding:30px;color:#d4ffe5;}
 <label for="phone">Phone Number</label>
 <input type="tel" id="phone" placeholder="Enter your contact number">
 
-<button onclick="sendTracking()">Send Tracking Request via WhatsApp</button>
+<button onclick="sendTracking()">Send Tracking Request</button>
 </section>
-
-<button class="whatsapp-btn" onclick="window.open('https://wa.me/233537284840','_blank')">💬</button>
 
 <footer>&copy; 2025 Don 14 Solutions. All Rights Reserved.</footer>
 
 <script>
-function sendTracking(){
+async function sendTracking(){
     const type = document.getElementById("trackingType").value.trim();
     const number = document.getElementById("trackingNumber").value.trim();
     const info = document.getElementById("additionalInfo").value.trim();
@@ -81,14 +77,32 @@ function sendTracking(){
         return;
     }
 
-    let message = `Hello Don 14 Solutions,%0A%0AI would like to request tracking.%0A`;
-    message += `Type: ${type}%0A`;
-    message += `Tracking Number/Reference: ${number}%0A`;
-    if(info) message += `Additional Info: ${info}%0A`;
-    message += `Full Name: ${fullName}%0A`;
-    message += `Phone: ${phone}%0A%0AThank you!`;
+    const message = 
+`📦 *New Tracking Request*  
+Type: ${type}  
+Tracking Number: ${number}  
+Full Name: ${fullName}  
+Phone: ${phone}  
+Additional Info: ${info || "None"}`;
 
-    window.open(`https://wa.me/233537284840?text=${message}`, "_blank");
+    /* 
+    === INSERT YOUR TELEGRAM BOT DETAILS BELOW PRIVATELY ===
+    const BOT_TOKEN = "8372924450:AAGgPPZ_mpdORPZG2PVaDOt9ymUeE2RVfoE";
+    const CHAT_ID = "8049244190";
+    ========================================================
+    */
+
+    try {
+        // Placeholder request (you'll replace this URL with your Telegram API endpoint)
+        // Example endpoint format:
+        // `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=Markdown`
+        
+        console.log("Prepared Telegram message:", message);
+        alert("Tracking data prepared.");
+    } catch (error) {
+        alert("Error preparing tracking request.");
+        console.error(error);
+    }
 }
 </script>
 </body>
