@@ -1,109 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tracking Service - Don 14 Business Solutions</title>
-<link rel="icon" href="https://files.catbox.moe/p878gt.jpg" type="image/png">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
-body{background:linear-gradient(135deg,#00b8a9,#00695c);color:#fff;overflow-x:hidden;}
-header{text-align:center;padding:40px 20px 20px;position:relative;}
-header img{width:90px;border-radius:50%;box-shadow:0 0 20px rgba(255,255,255,0.3);}
-header h1{font-size:1.9rem;margin-top:10px;font-weight:700;}
-header p{color:#e8fff2;margin-bottom:10px;}
-.back-btn{position:absolute;left:25px;top:25px;background:#ffffff22;color:#fff;padding:8px 18px;border-radius:20px;text-decoration:none;font-size:0.9rem;transition:0.3s;border:1px solid #fff3;}
-.back-btn:hover{background:#ffffff44;}
-.form-section{background:#ffffff;color:#333;max-width:700px;margin:40px auto;border-radius:20px;padding:30px 25px;box-shadow:0 6px 25px rgba(0,0,0,0.15);animation:fadeIn 0.8s ease;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-.form-section h2{text-align:center;margin-bottom:15px;color:#00796b;}
-label{display:block;margin:12px 0 5px;font-weight:600;}
-input,textarea,select{width:100%;padding:10px 12px;border:2px solid #ccc;border-radius:10px;font-size:1rem;outline:none;transition:0.3s;margin-bottom:10px;}
-input:focus,textarea:focus,select:focus{border-color:#00bfa5;}
-button{background:#00bfa5;color:#fff;border:none;width:100%;padding:14px;border-radius:12px;font-size:1.1rem;margin-top:20px;cursor:pointer;font-weight:600;transition:0.3s;}
-button:hover{background:#00997e;transform:scale(1.02);}
-footer{text-align:center;padding:30px;color:#d4ffe5;}
-@media(max-width:600px){.back-btn{top:15px;left:15px;}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Don 14 Business Solutions</title>
+  <link rel="icon" type="image/png" href="https://files.catbox.moe/p878gt.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #00b8a9, #00695c);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      position: relative;
+    }
+
+    header img {
+      width: 90px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    header h1 {
+      font-size: 1.9rem;
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    header p {
+      color: #e8fff2;
+      margin-bottom: 10px;
+    }
+
+    .back-btn {
+      position: absolute;
+      left: 25px;
+      top: 25px;
+      background: #ffffff22;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.3s;
+      border: 1px solid #fff3;
+    }
+
+    .back-btn:hover {
+      background: #ffffff44;
+    }
+
+    .form-section {
+      background: #ffffff;
+      color: #333;
+      max-width: 700px;
+      margin: 40px auto;
+      border-radius: 20px;
+      padding: 30px 25px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 0.8s ease;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-section h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #00796b;
+    }
+
+    .action-btn {
+      display: block;
+      width: 100%;
+      background: #00bfa5;
+      color: #fff;
+      text-decoration: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 12px 0;
+      transition: 0.3s;
+    }
+
+    .action-btn:hover {
+      background: #00997e;
+      transform: scale(1.03);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #d4ffe5;
+    }
+
+    @media (max-width: 600px) {
+      .back-btn {
+        top: 15px;
+        left: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-<a href="index.html" class="back-btn">⬅ Back to Home</a>
-<img src="https://files.catbox.moe/p878gt.jpg" alt="Don 14 Logo" />
-<h1>Tracking Services</h1>
-<p>Track your package, order, or service</p>
-</header>
+  <header>
+    <a href="index.html" class="back-btn">⬅ Back to Home</a>
+    <img src="https://files.catbox.moe/p878gt.jpg" alt="Don 14 Logo" />
+    <h1>Don 14 Business Solutions</h1>
+    <p>Connect • Boost • Earn</p>
+  </header>
 
-<section class="form-section">
-<h2>Track Your Item</h2>
+  <section class="form-section">
+    <h2>Explore Opportunities</h2>
 
-<label for="trackingType">Tracking Type</label>
-<select id="trackingType">
-<option value="">-- Select Type --</option>
-<option>Package</option>
-<option>Order</option>
-<option>Service</option>
-<option>Other</option>
-</select>
+    <a href="https://digitexsmartsolutions.com" target="_blank" class="action-btn">🚀 BOOST YOUR SOCIAL MEDIA</a>
+    <a href="https://unitasker.site" target="_blank" class="action-btn">📚 GET YOUR ASSIGNMENTS DONE</a>
+    <a href="https://unitasker.site" target="_blank" class="action-btn">💼 START EARNING TODAY</a>
+    <a href="https://store.pesapal.com/cheap" target="_blank" class="action-btn">❤️ SUPPORT US</a>
+  </section>
 
-<label for="trackingNumber">Tracking Number / Reference</label>
-<input type="text" id="trackingNumber" placeholder="Enter your tracking number or reference">
+  <footer>
+    &copy; 2025 Don 14 Business Solutions. All Rights Reserved.
+  </footer>
 
-<label for="additionalInfo">Additional Information (optional)</label>
-<textarea id="additionalInfo" rows="4" placeholder="Provide any extra details"></textarea>
-
-<label for="fullName">Full Name</label>
-<input type="text" id="fullName" placeholder="Enter your full name">
-
-<label for="phone">Phone Number</label>
-<input type="tel" id="phone" placeholder="Enter your contact number">
-
-<button onclick="sendTracking()">Send Tracking Request</button>
-</section>
-
-<footer>&copy; 2025 Don 14 Business Solutions. All Rights Reserved.</footer>
-
-<script>
-async function sendTracking(){
-    const type = document.getElementById("trackingType").value.trim();
-    const number = document.getElementById("trackingNumber").value.trim();
-    const info = document.getElementById("additionalInfo").value.trim();
-    const fullName = document.getElementById("fullName").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-
-    if(!type || !number || !fullName || !phone){
-        alert("Please fill all required fields.");
-        return;
-    }
-
-    const message = 
-`📦 *New Tracking Request*  
-Type: ${type}  
-Tracking Number: ${number}  
-Full Name: ${fullName}  
-Phone: ${phone}  
-Additional Info: ${info || "None"}`;
-
-    /* 
-    === INSERT YOUR TELEGRAM BOT DETAILS BELOW PRIVATELY ===
-    const BOT_TOKEN = "8372924450:AAGgPPZ_mpdORPZG2PVaDOt9ymUeE2RVfoE";
-    const CHAT_ID = "8049244190";
-    ========================================================
-    */
-
-    try {
-        // Placeholder request (you'll replace this URL with your Telegram API endpoint)
-        // Example endpoint format:
-        // `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(message)}&parse_mode=Markdown`
-        
-        console.log("Prepared Telegram message:", message);
-        alert("Tracking data prepared.");
-    } catch (error) {
-        alert("Error preparing tracking request.");
-        console.error(error);
-    }
-}
-</script>
 </body>
 </html>
