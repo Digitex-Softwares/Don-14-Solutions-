@@ -197,6 +197,10 @@
     <label for="fullName">Full Name</label>
     <input type="text" id="fullName" placeholder="Enter your full name" />
 
+    <!-- ✅ Added phone number field -->
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="Enter your phone number" />
+
     <button onclick="sendToTelegram()">Send Request</button>
   </section>
 
@@ -229,9 +233,10 @@
       const index = document.getElementById("index").value.trim();
       const year = document.getElementById("year").value.trim();
       const fullName = document.getElementById("fullName").value.trim();
+      const phone = document.getElementById("phone").value.trim();
 
-      if (!index || !year || !fullName) {
-        alert("⚠️ Please fill all fields before submitting.");
+      if (!index || !year || !fullName || !phone) {
+        alert("⚠ Please fill all fields before submitting.");
         return;
       }
 
@@ -241,14 +246,15 @@
         "School Placement";
 
       const message = 
-        `🧾 *New Result Request*\n\n` +
-        `📘 Type: ${type}\n` +
-        `🧮 Index: ${index}\n` +
-        `📅 Year: ${year}\n` +
-        `👤 Name: ${fullName}\n\n` +
-        `Sent from Don 14 Solutions Website`;
+        🧾 *New Result Request*\n\n +
+        📘 Type: ${type}\n +
+        🧮 Index: ${index}\n +
+        📅 Year: ${year}\n +
+        👤 Name: ${fullName}\n +
+        📞 Phone: ${phone}\n\n +
+        Sent from Don 14 Solutions Website;
 
-      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      fetch(https://api.telegram.org/bot${botToken}/sendMessage, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -267,7 +273,7 @@
         }
       })
       .catch(err => {
-        alert("⚠️ Network error. Please check your connection.");
+        alert("⚠ Network error. Please check your connection.");
         console.error(err);
       });
     }
